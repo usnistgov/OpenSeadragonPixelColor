@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<!--
+This software was developed at the National Institute of Standards and
+Technology by employees of the Federal Government in the course of
+their official duties. Pursuant to title 17 Section 105 of the United
+States Code this software is not subject to copyright protection and is
+in the public domain. This software is an experimental system. NIST assumes
+no responsibility whatsoever for its use by other parties, and makes no
+guarantees, expressed or implied, about its quality, reliability, or
+any other characteristic. We would appreciate acknowledgement if the
+software is used.
+-->
+
+<html>
+    <head>
+        <meta charset='utf-8'>
+
+        <title>OpenSeadragon PixelColor</title>
+
+        <link rel='stylesheet' 
+              type='text/css'
+              media='screen'
+              href='css/style.css'/>
+
+        <script src="openseadragon/openseadragon.min.js"></script>
+        <script src="openseadragon/openseadragon-pixelcolor.js"></script>
+        <script src="jquery-2.0.3.min.js"></script>
+
+        <style>
+            .openseadragon {
+                width: 600px;
+                height:600px;
+                background-color: black;
+                float: left;
+            }
+            
+            .values {
+                float: left;
+                margin-left: 10px;
+            }
+            
+            table {
+                border-collapse: collapse;
+            }
+            
+            th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>OpenSeadragon PixelColor example</h1>
+        
+        <div id="example" class="openseadragon" >
+        </div>
+        <div class="values">
+            <table>
+                <tr>
+                    <th>Red</th>
+                    <th>Green</th>
+                    <th>Blue</th>
+                    <th>Alpha</th>
+                </tr>
+                <tr>
+                    <td id="red">0</td>
+                    <td id="green">0</td>
+                    <td id="blue">0</td>
+                    <td id="alpha">0</td>
+                <tr>
+            </table>
+        </div>
+        
+        <script type="text/javascript">
+            var viewer = new OpenSeadragon.Viewer( {
+                id: "example",
+                prefixUrl: "openseadragon/images/",
+                showNavigator: true,
+                wrapHorizontal: false,
+                wrapVertical: false,
+                zoomPerScroll: 1.2,
+                minZoomImageRatio: 0.5,
+                tileSources: [ "data/testpattern.dzi" ]
+            } );
+
+            var onMouseTrackerMove = function( event ) {
+                var color = viewer.getPixelColor( event.position );
+                var red = color[0];
+                var green = color[1];
+                var blue = color[2];
+                var alpha = color[3];
+                $("#red").text(red);
+                $("#green").text(green);
+                $("#blue").text(blue);
+                $("#alpha").text(alpha);
+            };
+
+            var mouseTracker = new OpenSeadragon.MouseTracker( {
+                element: example,
+                moveHandler: onMouseTrackerMove
+            } ).setTracking( true );
+        </script>
+    </body>
+</html>
