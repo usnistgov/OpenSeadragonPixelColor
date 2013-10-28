@@ -25,3 +25,5 @@ no responsibility whatsoever for its use by other parties, and makes no
 guarantees, expressed or implied, about its quality, reliability, or
 any other characteristic. We would appreciate acknowledgement if the
 software is used.
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/d1fe3d9fc377a939b1a00d3e060937af "githalytics.com")](http://githalytics.com/NISTDeepZoom/OpenSeadragonPixelColor)
