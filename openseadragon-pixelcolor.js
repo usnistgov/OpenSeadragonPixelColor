@@ -12,12 +12,19 @@
 
 
 (function($) {
-    
+
+    if (!$.version || $.version.major < 1) {
+        throw new Error('OpenSeadragonPixelColor requires OpenSeadragon version 1.0.0+');
+    }
+
     $.Viewer.prototype.getPixelColor = function(pixel) {
         var canvasDiv = this.canvas;
         var canvases = canvasDiv.getElementsByTagName("canvas");
         var canvas = canvases[0];
+        if (!canvas) {
+            throw new Error("Canvas rendering required to get pixel color.");
+        }
         return canvas.getContext("2d").getImageData(pixel.x, pixel.y, 1, 1).data;
     };
-    
-} (OpenSeadragon));
+
+}(OpenSeadragon));
