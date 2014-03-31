@@ -18,13 +18,11 @@
     }
 
     $.Viewer.prototype.getPixelColor = function(pixel) {
-        var canvasDiv = this.canvas;
-        var canvases = canvasDiv.getElementsByTagName("canvas");
-        var canvas = canvases[0];
-        if (!canvas) {
+        var drawer = this.drawer;
+        if (!drawer.useCanvas) {
             throw new Error("Canvas rendering required to get pixel color.");
         }
-        return canvas.getContext("2d").getImageData(pixel.x, pixel.y, 1, 1).data;
+        return drawer.canvas.getContext("2d").getImageData(pixel.x, pixel.y, 1, 1).data;
     };
 
 }(OpenSeadragon));
