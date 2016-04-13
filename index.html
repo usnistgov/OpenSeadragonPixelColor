@@ -18,10 +18,9 @@ software is used.
 
         <title>OpenSeadragon PixelColor</title>
 
-        <link rel='stylesheet' 
-              type='text/css'
-              media='screen'
-              href='css/style.css'/>
+        <!-- NIST template CSS -->
+        <link rel="stylesheet" href="static/css/NISTStyle.css">
+        <link rel="stylesheet" href="static/css/NISTPages.css">
 
         <script src="openseadragon/openseadragon.min.js"></script>
         <script src="openseadragon/openseadragon-pixelcolor.js"></script>
@@ -34,82 +33,122 @@ software is used.
                 background-color: black;
                 float: left;
             }
-            
+
             .values {
                 float: left;
                 margin-left: 10px;
             }
-            
+
             table {
                 border-collapse: collapse;
             }
-            
+
             th, td {
                 border: 1px solid black;
+            }
+
+            footer {
+                clear: both;
             }
         </style>
     </head>
     <body>
-        <h1>OpenSeadragon PixelColor example</h1>
-        
-        <div id="example" class="openseadragon" >
-        </div>
-        <div class="values">
-            <table>
-                <tr>
-                    <th>Red</th>
-                    <th>Green</th>
-                    <th>Blue</th>
-                    <th>Alpha</th>
-                </tr>
-                <tr>
-                    <td id="red">0</td>
-                    <td id="green">0</td>
-                    <td id="blue">0</td>
-                    <td id="alpha">0</td>
-                <tr>
-            </table>
-        </div>
-        
-        <script type="text/javascript">
-            var viewer = new OpenSeadragon.Viewer( {
-                id: "example",
-                prefixUrl: "openseadragon/images/",
-                showNavigator: true,
-                wrapHorizontal: false,
-                wrapVertical: false,
-                zoomPerScroll: 1.2,
-                minZoomImageRatio: 0.5,
-                tileSources: [ "data/testpattern.dzi" ]
-            } );
+        <header class="nist-header">
+            <h1>
+                <a class="nist-logo" target="_blank" href="http://www.nist.gov/" title="Go to nist.gov">National Institute of Standards and Technology</a>
+            </h1>
+            <div class="nist-links">
+                <a class="nist-links-button" target="_blank" href="http://www.nist.gov">NIST Website</a>
+                <a class="nist-links-button mobile-hide" target="_blank" href="http://www.nist.gov/public_affairs/nandyou.cfm">About NIST</a>
+                <a class="nist-links-button mobile-hide" target="_blank" href="https://github.com/usnistgov">usnistgov on Github</a>
+            </div>
+        </header>
+        <section class="home home-title">
+            <h1>OpenSeadragon PixelColor Example</h1>
+        </section>
 
-            var onMouseTrackerMove = function( event ) {
-                var color = viewer.getPixelColor( event.position );
-                var red = color[0];
-                var green = color[1];
-                var blue = color[2];
-                var alpha = color[3];
-                $("#red").text(red);
-                $("#green").text(green);
-                $("#blue").text(blue);
-                $("#alpha").text(alpha);
-            };
+        <section class="home-about">
+            <p>
+                Demo of the OpenSeadragon pixel color plugin.
+                Code and documentation are available on
+                <a href="https://github.com/usnistgov/OpenSeadragonPixelColor">GitHub</a>.
+            </p>
+        </section>
 
-            var mouseTracker = new OpenSeadragon.MouseTracker( {
-                element: example,
-                moveHandler: onMouseTrackerMove
-            } ).setTracking( true );
-        </script>
-        
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        <section class="demo">
+            <div id="example" class="openseadragon" >
+            </div>
+            <div class="values">
+                <table>
+                    <tr>
+                        <th>Red</th>
+                        <th>Green</th>
+                        <th>Blue</th>
+                        <th>Alpha</th>
+                    </tr>
+                    <tr>
+                        <td id="red">0</td>
+                        <td id="green">0</td>
+                        <td id="blue">0</td>
+                        <td id="alpha">0</td>
+                    </tr>
+                </table>
+            </div>
 
-            ga('create', 'UA-45172783-3', 'nistdeepzoom.github.io');
-            ga('send', 'pageview');
+            <script type="text/javascript">
+                var viewer = new OpenSeadragon.Viewer({
+                    id: "example",
+                    prefixUrl: "openseadragon/images/",
+                    showNavigator: true,
+                    wrapHorizontal: false,
+                    wrapVertical: false,
+                    zoomPerScroll: 1.2,
+                    minZoomImageRatio: 0.5,
+                    tileSources: ["data/testpattern.dzi"]
+                });
 
-        </script>
+                var onMouseTrackerMove = function(event) {
+                    var color = viewer.getPixelColor(event.position);
+                    var red = color[0];
+                    var green = color[1];
+                    var blue = color[2];
+                    var alpha = color[3];
+                    $("#red").text(red);
+                    $("#green").text(green);
+                    $("#blue").text(blue);
+                    $("#alpha").text(alpha);
+                };
+
+                var mouseTracker = new OpenSeadragon.MouseTracker({
+                    element: example,
+                    moveHandler: onMouseTrackerMove
+                }).setTracking(true);
+            </script>
+        </section>
+        <footer class="site-footer">
+            <div class="section-container">
+                <div class="section-content">
+                    This plugin and demo are maintained by the
+                    <a href="http://www.nist.gov/itl/ssd/is/">Information System Group</a>
+                    within the
+                    <a href="http://www.nist.gov/itl/ssd/">Software and Systems Division</a>.
+                </div>
+            </div>
+        </footer>
+
+        <hr>
+        <section class="footer">
+            <a target="_blank" href="http://www.nist.gov/public_affairs/privacy.cfm#privpolicy">Privacy Policy</a>
+            |
+            <a target="_blank" href="http://www.nist.gov/public_affairs/privacy.cfm#secnot">Security Notice</a>
+            |
+            <a href="http://www.nist.gov/public_affairs/privacy.cfm#accesstate">Accessibility Statement</a>
+            |
+            <a target="_blank" href="mailto:peter.bajcsy@nist.gov?subject=Feedback%20on%20OpenSeadragonPixelColor%20demo">Send feedback</a>
+            | Last updated: April 13, 2016
+        </section>
+
+        <!-- Google analytics -->
+        <script type="text/javascript" id="_fed_an_js_tag" src="//www.nist.gov/js/federated-analytics.all.min.js?agency=NIST&subagency=github&pua=UA-42404149-54&yt=true&exts=ppsx,pps,f90,sch,rtf,wrl,txz,m1v,xlsm,msi,xsd,f,tif,eps,mpg,xml,pl,xlt,c"></script>
     </body>
 </html>
