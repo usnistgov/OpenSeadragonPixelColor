@@ -1,7 +1,7 @@
-This OpenSeadragon ( http://openseadragon.github.io/ ) plugin add a method
+This [OpenSeadragon](http://openseadragon.github.io/) plugin add a method
 to the viewer to get the color of a pixel.
 
-A demo is available here: http://nistdeepzoom.github.io/OpenSeadragonPixelColor/
+A demo is available here: https://pages.nist.gov/OpenSeadragonPixelColor/
 
 It can be used like this:
 `````javascript
@@ -10,6 +10,7 @@ var color = viewer.getPixelColor(myPixel);
 var red = color[0];
 var green = color[1];
 var blue = color[2];
+var alpha = color[3];
 `````
 
 The pixel coordinates must be relative to the viewer element.
